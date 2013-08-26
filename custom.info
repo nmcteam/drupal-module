@@ -1,0 +1,5 @@
+name = "Site Custom Module"
+description = "Custom Drupal module for this website"
+core = 7.x
+dependencies[] = views
+package = "Custom"

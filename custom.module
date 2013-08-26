@@ -1,0 +1,42 @@
+<?php
+/********************************************************************************
+* Exportable Views
+*******************************************************************************/
+
+function custom_views_api() {
+    return array('api' => '3.0');
+}
+
+function custom_views_default_views() {
+    $path = './' . drupal_get_path('module', 'custom') . '/views/*.inc';
+    $views = array();
+    foreach (glob($path) as $file) {
+        require_once($file);
+    }
+
+    return $views;
+}
+
+/********************************************************************************
+* Custom Menu Callbacks
+*******************************************************************************/
+
+function custom_menu()
+{
+    $items = array();
+
+    $items['custom/route'] = array(
+        'title' => 'My Custom Menu Item',
+        'description' => 'Custom menu item description',
+        'page callback' => 'custom_callback',
+        'access callback' => true,
+        'type' => MENU_CALLBACK
+    );
+
+    return $items;
+}
+
+function custom_callback()
+{
+    // Do something
+}
